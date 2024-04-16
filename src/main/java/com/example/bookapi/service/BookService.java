@@ -28,12 +28,14 @@ public class BookService {
     }
 
     public Book getBookByTitleAndAuthor(String title, String author){
-        return new Book(43l,title,author,new Category(1l,"category"));
+        Book book = new Book();
+        book = repository.findFirstByTitleAndAuthor(title, author);
+        return book;
     }
 
     public List<Book> getBooksByCategoryName(String categoryName){
         List<Book> bookList = new ArrayList<>();
-        bookList.add(new Book(43l,"title","author",new Category(1l,"category")));
+        bookList = repository.findByCategoryName(categoryName);
         return bookList;
     }
 
@@ -61,6 +63,6 @@ public class BookService {
     }
 
     public void deleteById(Long id){
-        return;
+        repository.deleteById(id);
     }
 }

@@ -39,9 +39,9 @@ public class BookController {
 
     @GetMapping("/by-category-name")
     public ResponseEntity<List<Book>> getBooksByCategoryName(
-            @RequestParam(value = "category") String category
+            @RequestParam(value = "category") String categoryName
     ){
-        return ResponseEntity.ok(bookService.getBooksByCategoryName(category));
+        return ResponseEntity.ok(bookService.getBooksByCategoryName(categoryName));
     }
 
     @PostMapping
