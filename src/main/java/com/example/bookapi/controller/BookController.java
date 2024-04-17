@@ -18,12 +18,6 @@ public class BookController {
     @Autowired
     private final BookService bookService;
 
-//    найти одну книгу по её названию и автору,
-//    найти список книг по имени категории,
-//    создать книгу,
-//    обновить информацию о книге,
-//    удалить книгу по ID.
-
     @GetMapping
     public ResponseEntity<List<Book>> getAll(){
         return ResponseEntity.ok(bookService.findAll());
@@ -46,8 +40,6 @@ public class BookController {
 
     @PostMapping
     public ResponseEntity<Book> createBook(@RequestBody UpsertBookRequest request){
-        System.out.println(request.getTitle());
-        System.out.println("dsfd");
         return ResponseEntity.status(HttpStatus.CREATED).body(bookService.saveBook(request));
     }
 
@@ -56,7 +48,6 @@ public class BookController {
             @PathVariable Long id,
             @RequestBody UpsertBookRequest request
     ){
-        System.out.println(request.getTitle());
         return ResponseEntity.status(HttpStatus.CREATED).body(bookService.updateBook(id, request));
     }
 
